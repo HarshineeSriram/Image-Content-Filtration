@@ -39,8 +39,8 @@ The main objective that helped navigate through the development process
 was to create a tool that is light-weight and robust but, at the same
 time, does not compromise a lot on the observed accuracy. During the
 research phase of this project, multiple recommended deep learning
-models were tested on the curated dataset, such as: Inception V3,
-Inception V4, MobileNet V1, MobileNet V2, VGG16 and Resnet50. Upon
+models were tested on the curated dataset, such as: [Inception V3][1],
+[Inception V4][2], [MobileNet V1][3], [MobileNet V2][4], [VGG16][5] and [Resnet50][6]. Upon
 comparisons, MobileNet V1 was unanimously selected based on its
 performance, size requirements, and processing time. Algorithms that
 further reduce the size of a neural-network architecture were also
@@ -164,6 +164,10 @@ This is subject to data availability. Deeper categories could be
 introduced (for example: why is a particular content marked unsafe?) or
 category-based tags could be assigned to each user input (for images
 that might have been marked unsafe for multiple reasons).
+
+# References
+
+[1] <https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html> "Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residuallearning for image recognition. In _Proceedings of the IEEE conference oncomputer vision and pattern recognition_, pages 770–778, 2016"
 
   [Outreachy]: https://www.outreachy.org/
   [this GitHub repository]: https://github.com/EBazarov/nsfw_data_source_urls
