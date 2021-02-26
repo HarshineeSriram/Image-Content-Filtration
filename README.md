@@ -1,3 +1,5 @@
+Link to the fully trained model: https://drive.google.com/drive/folders/12iBeCIruhnmoVyBdOXMlYrn7SMRVc7zN?usp=sharing
+
 # Introduction
 
 This tool was developed as a part of an [Outreachy][] (December
@@ -112,8 +114,8 @@ as well.
 ## Preliminary performance
 
 Based on the curated dataset, after the training phase, the training
-accuracy was 98.91%, the training error was 0.0334, the validation
-accuracy was 96.43% and the validation loss was 0.1030.
+accuracy was 98.90%, the training error was 0.0346, the validation
+accuracy was 96.43% and the validation loss was 0.1177.
 
 ## Modifying the architecture
 
