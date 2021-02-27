@@ -13,17 +13,17 @@ aspects of computer vision.
 
 The dataset this deep learning tool was trained on was curated
 personally to make sure there were no images that were wrongly
-categorized or duplicates. The constituents of the dataset is as
-follows: Train Set (3262 questionable images and 3132 safe images),
+categorized or duplicates. The constituents of the dataset are:
+follows Train Set (3262 questionable images and 3132 safe images),
 Validation Set (1089 questionable images and 1048 safe images), and Test
 Set (2127 images).
 
 ## Sources for the images
 
-One of sources for questionable media content was [this GitHub
+One of the sources for questionable media content was [this GitHub
 repository][]. Other than that, popular websites such as [Imgur][] and
-[Reddit][] were also referred to in order to find different forms of
-visual content that would adhere to either categories.For safe images,
+[Reddit][] was also referred to find different forms of
+visual content that would adhere to either category.For safe images,
 one of the primary sources was [Lorem Picsum][]. Apart from that,
 websites such as [Shutterstock][] and [Flickr][] were also referred to.
 
@@ -31,8 +31,8 @@ websites such as [Shutterstock][] and [Flickr][] were also referred to.
 
 From the GitHub repository listed above, a list of URLs was retrieved
 [this is the code][]. After this, duplicate images i.e. images with
-different filenames but same content were removed, which can also be
-viewed in the same page. For safe images, one snippet of the scraping
+different filenames but the same content were removed, which can also be
+viewed on the same page. For safe images, one snippet of the scraping
 process (which includes [Lorem Picsum][]), can be found [here][].
 Duplicate images were removed in a fashion similar to that described
 [here][this is the code].
@@ -43,12 +43,12 @@ The main objective that helped navigate through the development process
 was to create a tool that is light-weight and robust but, at the same
 time, does not compromise a lot on the observed accuracy. During the
 research phase of this project, multiple recommended deep learning
-models were tested on the curated dataset, such as: Inception V3,
+models were tested on the curated dataset, such as Inception V3,
 Inception V4, MobileNet V1[3], MobileNet V2, VGG16 and Resnet50. Upon
 comparisons, MobileNet V1 was unanimously selected based on its
 performance, size requirements, and processing time. Algorithms that
 further reduce the size of a neural-network architecture were also
-tested out (for example: layer-based pruning and knowledge distillation
+tested out (for example layer-based pruning and knowledge distillation
 systems), but the performance of the resulting model was considerably
 worse (although this subset model was a fraction of the size). Due to
 time constraints, it was decided to proceed with the originally
@@ -56,7 +56,7 @@ developed neural-network model.
 
 ## Overview of the architecture
 
-The core of this deep-learning based tool is its pretrained model -
+The core of this deep-learning-based tool is its pre-trained model -
 MobileNet V1. The heart of the MobileNet V1 model is its usage of
 depth-wise separable convolutions instead of the traditional
 computationally expensive CNN-based operations. These split the scanning
@@ -94,18 +94,18 @@ separable convolutions are more efficient.
 
 </div>
 
-he MobileNet V1 has 28 layers (14 standard convolution layers, 13
+The MobileNet V1 has 28 layers (14 standard convolution layers, 13
 depth-wise separable convolution layers, 1 average pool layer, 1 fully
 connected layer, and a Softmax classifier in the end. ) At the end of
 this architecture, a novel secondary architecture has been added that
-allows the model to detect high level features in our dataset for a more
+allows the model to detect high-level features in our dataset for a more
 personalized image classification operation.
 
 ## Time and Space Complexities
 
 The MobileNet V1 architecture has around 4.2 million parameters, which
 is considerably lesser than that of other models such as Resnet50 (∼ 23
-million parameters), Inception V3 (∼ 24 million parameters), and VGG16
+a million parameters), Inception V3 (∼ 24 million parameters), and VGG16
 (∼ 138 million parameters). Considering the number of parameters, the
 space complexity for MobileNet V1 is one of the lowest among all
 pre-trained deep learning models. Additionally, MobileNet V1 also uses
@@ -121,7 +121,7 @@ accuracy was 96.43% and the validation loss was 0.1177.
 
 ## Modifying the architecture
 
-As with most transfer-learning based approaches, majority of the layers
+As with most transfer-learning based approaches, the majority of the layers
 in the architecture were frozen to facilitate faster training time and
 to conserve the core weights that were developed in the original
 MobileNet V1 model. However, it is fairly simple to "unfreeze" the
@@ -138,7 +138,7 @@ variations can be tested out with ease.
 ## Acceptable media content extensions
 
 This tool currently supports major image file extensions i.e. raster
-image files (JPEG/JPG, PNG, and GIF). Support for PSD, SVG and other
+image files (JPEG/JPG, PNG, and GIF). Support for PSD, SVG, and other
 vector image formats might come shortly.
 
 ## Calling the API
@@ -154,12 +154,12 @@ participate in the task of text annotation that helps with the training
 of intelligent wiki-tools based on Natural Language Processing. Future
 work would involve creating a similar tool that allows users to assign
 label(s) to images, which can then be used for bettering the
-image-recognition based tools (for example: this content filtration
+image-recognition based tools (for example this content filtration
 tool) at Wikimedia.
 
 ## Video content filtering
 
-Future versions of this tool could incorporate a functionality that also
+Future versions of this tool could incorporate functionality that also
 accepts videos and assesses the percentage of unsafe content in them.
 
 ## Categorization
