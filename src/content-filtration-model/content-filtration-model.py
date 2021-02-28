@@ -1,5 +1,14 @@
 # Installing dependencies
-import os
+
+# Load all constants
+from constants_model import (
+    train_dir, validation_dir, dimension1,
+    dimension2, dimension3, batch_size,
+    stopping_acc, stopping_loss, monitor,
+    factor, patience, min_lr,
+    learning_rate, loss, metrics,
+    num_training_images, num_validation_images
+)
 import tensorflow as tf
 from keras.models import Model
 from keras.optimizers import Adam
@@ -8,13 +17,10 @@ from keras.layers import Dense, GlobalAveragePooling2D
 from keras.applications import MobileNet
 from keras.applications.mobilenet import preprocess_input
 
-# Defining our paths for training and validation steps
-train_dir = r'path\to\training\data'
-validation_dir = r'path\to\validation\data'
-
 # Removing the last layer of MobileNet and adding the rest
-base_model = MobileNet(weights='imagenet',
-                       include_top=False, input_shape=(224, 224, 3))
+base_model = MobileNet(
+    weights='imagenet', include_top=False,
+    input_shape=(dimension1, dimension2, dimension3))
 
 # Defining a custom secondary architecture to existing MobileNet model
 x = base_model.output
@@ -50,42 +56,28 @@ class Stop_Validation(tf.keras.callbacks.Callback):
 
 
 callback_stop_training = Stop_Validation(
-    acc_threshold=0.9616, loss_threshold=0.1111)
+    acc_threshold=stopping_acc, loss_threshold=stopping_loss)
 
 # Setting a callback to reduce learning rate based on validation loss
 callback_reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(
-    monitor='val_loss', factor=0.2, patience=5, min_lr=0.0001)
+    monitor=monitor, factor=factor, patience=patience, min_lr=min_lr)
 
-model.compile(optimizer=Adam(lr=0.00001),
-              loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer=Adam(lr=learning_rate),
+              loss=loss, metrics=metrics)
 
 # Setting train and validation data generators for training and validation
-batch_size = 30
-
 train_datagen = ImageDataGenerator(
     preprocessing_function=preprocess_input)
 
 train_generator = train_datagen.flow_from_directory(
-    train_dir, target_size=(224, 224), color_mode='rgb',
+    train_dir, target_size=(dimension1, dimension2), color_mode='rgb',
     batch_size=batch_size, class_mode='categorical', shuffle=True)
 
 validation_datagen = ImageDataGenerator(rescale=1.0/255.)
 
 validation_generator = validation_datagen.flow_from_directory(
     validation_dir, batch_size=batch_size, class_mode='categorical',
-    target_size=(224, 224))
-
-unsafe_images_train = [fn for fn in os.listdir(
-    r'path\to\train\unsafe_images') if fn.endswith('.extension')]
-safe_images_train = [fn for fn in os.listdir(
-    r'path\to\train\safe_images') if fn.endswith('.extension')]
-unsafe_images_validation = [fn for fn in os.listdir(
-    r'path\to\validation\unsafe_images') if fn.endswith('.extension')]
-safe_images_validation = [fn for fn in os.listdir(
-    r'path\to\validation\safe_images') if fn.endswith('.extension')]
-
-num_training_images = len(unsafe_images_train+safe_images_train)
-num_validation_images = len(unsafe_images_validation+safe_images_validation)
+    target_size=(dimension1, dimension2))
 
 # Fitting the model
 history = model.fit(

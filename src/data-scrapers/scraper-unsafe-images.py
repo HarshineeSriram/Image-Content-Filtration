@@ -4,8 +4,11 @@ import requests
 import matplotlib.pyplot as plt
 from scipy.misc import imread
 
-# Extracting images from a .txt of URLs
-file1 = open('COMPLETE.TXT', 'r')
+# import constants
+from constants_scraper_unsafe import (
+    file1, filepath
+)
+
 Lines = file1.readlines()
 img_index = 0
 for line in Lines:
@@ -18,8 +21,6 @@ for line in Lines:
     except Exception:
         continue
 
-# Removing duplicate images
-filepath = r'path\to\unsafe\images'
 os.chdir(filepath)
 
 
