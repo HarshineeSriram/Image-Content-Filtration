@@ -37,3 +37,5 @@ safe_images_validation = [fn for fn in os.listdir(
 
 num_training_images = len(unsafe_images_train+safe_images_train)
 num_validation_images = len(unsafe_images_validation+safe_images_validation)
+
+epochs = 10

@@ -7,7 +7,8 @@ from constants_model import (
     stopping_acc, stopping_loss, monitor,
     factor, patience, min_lr,
     learning_rate, loss, metrics,
-    num_training_images, num_validation_images
+    num_training_images, num_validation_images,
+    epochs
 )
 import tensorflow as tf
 from keras.models import Model
@@ -86,6 +87,6 @@ history = model.fit(
     steps_per_epoch=int(num_training_images/batch_size),
     # num_validation_images = total number of validation images
     validation_steps=int(num_validation_images/batch_size),
-    epochs=10, callbacks=[callback_reduce_lr, callback_stop_training])
+    epochs=epochs, callbacks=[callback_reduce_lr, callback_stop_training])
 
 model.save('name_of_model.h5')
