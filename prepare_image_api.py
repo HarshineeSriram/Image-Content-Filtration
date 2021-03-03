@@ -10,6 +10,7 @@ from keras import models
 def load_model():
     global model
     model = models.load_model(r'path\to\model.h5')
+    return model
 
 
 def prepare_image(img):

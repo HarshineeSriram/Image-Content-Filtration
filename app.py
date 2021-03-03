@@ -10,7 +10,7 @@ from prepare_image_api import (
 from PIL import Image
 
 app = flask.Flask(__name__)
-model = None
+model = load_model()
 
 
 @app.route("/predict", methods=["POST"])
