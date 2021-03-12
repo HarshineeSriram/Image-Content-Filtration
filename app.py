@@ -31,6 +31,7 @@ def predict():
         probability = list_preds[0][0] if np.argmax(preds) == 0 \
             else list_preds[0][1]
 
+        data["predictions"] = []
         r = {"label": label, "probability": float(probability)}
         data["predictions"].append(r)
 
