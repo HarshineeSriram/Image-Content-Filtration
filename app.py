@@ -28,7 +28,8 @@ def predict():
         list_preds = list(preds)
 
         label = "Unsafe" if np.argmax(preds) == 0 else "Safe"
-        probability = list_preds[0][0] if np.argmax(preds) == 0 else list_preds[0][1]
+        probability = list_preds[0][0] if np.argmax(preds) == 0 \
+            else list_preds[0][1]
 
         r = {"label": label, "probability": float(probability)}
         data["predictions"].append(r)
