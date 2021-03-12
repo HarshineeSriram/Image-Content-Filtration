@@ -148,11 +148,11 @@ vector image formats might come shortly.
 
 Clone this repository and download the fully trained model 
 (https://drive.google.com/drive/folders/12iBeCIruhnmoVyBdOXMlYrn7SMRVc7zN?usp=sharing).
-Specify the path to the model and your constants in the "constants_api.py" file, and 
+Specify the path to the model and your constants in the ```constants_api.py``` file, and 
 use the following command in the terminal: 
 ```curl -X POST -F image=@Test_A001.png "http://127.0.0.1:5000/predict"```
 Where ```Test_A001.png``` is an image you want to test and 
-```"http://127.0.0.1:5000/predict"``` is where the API is running.
+```"http://127.0.0.1:5000/predict"``` is where the API predict method is running.
 
 # Future Work
 
