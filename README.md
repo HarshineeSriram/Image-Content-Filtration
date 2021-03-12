@@ -1,5 +1,24 @@
 Link to the fully trained model: https://drive.google.com/drive/folders/12iBeCIruhnmoVyBdOXMlYrn7SMRVc7zN?usp=sharing
 
+# Table of Contents
+1. [Introduction](#introduction)
+2. [The dataset](#the-dataset)
+  * [Sources for the images](#sources-for-the-images)
+  * [Image curation process](#image-curation-process)
+3. [Design considerations and architecture details](#design-considerations-and-architecture-details)
+  * [Overview of the architecture](#overview-of-the-architecture)
+  * [Time and Space Complexities](#time-and-space-complexities)
+  * [Preliminary performance](#preliminary-performance)
+  * [Modifying the architecture](#modifying-the-architecture)
+  * [Experimenting](#experimenting-with-the-project-with-your-own-dataset)
+  * [Acceptable media content extensions](#acceptable-media-content-extensions)
+  * [Calling the API](#calling-the-api)
+4. [Future Work](#future-work)
+  * [Integration with the abuse filter](#integration-with-the-abuse-filter)
+  * [Image annotation tool](#image-annotation-tool)
+  * [Video content filtering](#video-content-filtering)
+  * [Categorization](#categorization)
+
 # Introduction
 
 This tool was developed as a part of an [Outreachy][] (December
