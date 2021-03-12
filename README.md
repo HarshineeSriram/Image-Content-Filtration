@@ -129,9 +129,14 @@ more computational power is available. The secondary architecture (that
 adds to the MobileNet V1 network) is fully malleable and, hence, new
 variations can be tested out with ease.
 
-# Installation and Implementation
+## Experimenting with the project with your own dataset
 
-## Requirements
+In order to do so, clone this repository and add your own constants/folder paths
+in the ```constants_model.py``` file in the ```src``` folder. If you'd like to use the 
+scraper tools, fill in your constants in the ```constants_scraper_safe.py``` and 
+```constants_scraper_unsafe.py``` files in the ```src``` folder. The experiment files 
+```knowledge_distillation.py``` and ```pruning.py``` do not have corresponding constant 
+files because they are self-contained.
 
 ## Acceptable media content extensions
 
@@ -141,9 +146,17 @@ vector image formats might come shortly.
 
 ## Calling the API
 
-## Integration with the abuse filter
+Clone this repository and download the fully trained model 
+(https://drive.google.com/drive/folders/12iBeCIruhnmoVyBdOXMlYrn7SMRVc7zN?usp=sharing).
+Specify the path to the model and your constants in the "constants_api.py" file, and 
+use the following command in the terminal: 
+```curl -X POST -F image=@Test_A001.png "http://127.0.0.1:5000/predict"```
+Where ```Test_A001.png``` is an image you want to test and 
+```"http://127.0.0.1:5000/predict"``` is where the API is running.
 
 # Future Work
+
+## Integration with the abuse filter
 
 ## Image annotation tool
 
