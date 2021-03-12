@@ -1,7 +1,6 @@
 import io
 import flask
 import numpy as np
-import tensorflow as tf
 from constants_api import (
     debug, use_reloader
 )
@@ -11,13 +10,12 @@ from prepare_image_api import (
 from PIL import Image
 
 app = flask.Flask(__name__)
-
 model = load_model()
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    data = {"status_code": 400}
-    #if flask.request.method == "POST":
+    data = {}
     if flask.request.files.get("image"):
         # Read the image and use model to predict
         # Store the predicted label and probability
@@ -32,16 +30,13 @@ def predict():
         label = "Unsafe" if np.argmax(preds) == 0 else "Safe"
         probability = list_preds[0][0] if np.argmax(preds) == 0 else list_preds[0][1]
 
-        data["predictions"] = []
         r = {"label": label, "probability": float(probability)}
         data["predictions"].append(r)
-        data["status_code"] = 200
 
-    # return the data dictionary as a JSON response
-    return flask.jsonify(data)
+    # return the data dictionary as a JSON response and the status code
+    return data, 200
 
 
 if __name__ == "__main__":
     print(("Loading the model and starting the server. . ."))
-    #load_model()
     app.run(debug=debug, use_reloader=use_reloader)

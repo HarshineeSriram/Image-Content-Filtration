@@ -5,11 +5,12 @@
 from keras.applications.mobilenet import preprocess_input
 from keras.preprocessing.image import img_to_array
 from keras import models
+from constants_api import model_path
 
 
 def load_model():
     global model
-    model = models.load_model(r'path\to\model.h5')
+    model = models.load_model(model_path)
     return model
 
 
