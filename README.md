@@ -158,6 +158,11 @@ Where ```Test_A001.png``` is an image you want to test and
 
 ## Integration with the abuse filter
 
+Currently, this tool is under the testing stage. Once it passes this 
+stage, it could be hooked on to the [Abuse Filter tool](https://www.mediawiki.org/wiki/Extension:AbuseFilter)
+at Wikimedia where it could preemptively flag an image that meets the profile of a content
+that should be filtered. 
+
 ## Image annotation tool
 
 Currently, the [Labels][] tool developed by Wikimedia Labs helps users
